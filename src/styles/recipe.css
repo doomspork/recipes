@@ -42,11 +42,18 @@ body {
   border-bottom: 1px solid #e8dfd4;
 }
 
+.recipe-headline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
 .recipe-title {
   font-size: 2.25rem;
   font-weight: 700;
   color: #2d2d2d;
-  margin-bottom: 0.75rem;
 }
 
 .recipe-meta {
@@ -156,31 +163,22 @@ body {
   font-size: 1rem;
 }
 
-/* Recipe Footer */
-.recipe-footer {
-  background: #faf6f0;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #e8dfd4;
-}
-
 .total-time {
-  font-size: 1.1rem;
   font-weight: 700;
   color: #2d2d2d;
 }
 
 .cooking-method {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #fff;
   background: #c0532d;
-  padding: 0.4rem 0.8rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 4px;
+  white-space: nowrap;
+  align-self: center;
 }
 
 /* Responsive Design */
@@ -261,11 +259,6 @@ body {
     padding: 2rem 2.5rem;
   }
 
-  .recipe-footer {
-    padding: 1.25rem 2.5rem;
-    margin-top: auto;
-  }
-
   .section-title {
     border-bottom-color: #c0532d;
     -webkit-print-color-adjust: exact;
@@ -281,12 +274,6 @@ body {
   .cooking-method {
     background: #c0532d;
     color: #fff;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .recipe-footer {
-    background: #faf6f0;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }

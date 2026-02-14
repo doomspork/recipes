@@ -51,8 +51,12 @@ const {
   </nav>
   <article class="recipe-card">
     <header class="recipe-header">
-      <h1 class="recipe-title">{title}</h1>
+      <div class="recipe-headline">
+        <h1 class="recipe-title">{title}</h1>
+        <span class="cooking-method">{method}</span>
+      </div>
       <div class="recipe-meta">
+        <span class="total-time">{total_time}</span>
         <span>{servings}</span>
         {prep_time && <span>Prep: {prep_time}</span>}
         {rest_time && <span>Rest: {rest_time}</span>}
@@ -71,7 +75,7 @@ const {
               <ul class="ingredients-list">
                 {group.items.map((item) => (
                   <li>
-                    {item.amount && <span class="ingredient-amount">{item.amount}</span>}{item.amount && ' '}{item.name}
+                    {item.amount && <span class="ingredient-amount">{item.amount}</span>}{item.amount && ' '}<span set:html={item.name} />
                   </li>
                 ))}
               </ul>
@@ -81,7 +85,7 @@ const {
           <ul class="ingredients-list">
             {ingredients?.map((item) => (
               <li>
-                {item.amount && <span class="ingredient-amount">{item.amount}</span>}{item.amount && ' '}{item.name}
+                {item.amount && <span class="ingredient-amount">{item.amount}</span>}{item.amount && ' '}<span set:html={item.name} />
               </li>
             ))}
           </ul>
@@ -98,10 +102,6 @@ const {
       </section>
     </div>
 
-    <footer class="recipe-footer">
-      <span class="total-time">{total_time}</span>
-      <span class="cooking-method">{method}</span>
-    </footer>
   </article>
 </body>
 </html>
