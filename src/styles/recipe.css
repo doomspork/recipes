@@ -12,6 +12,21 @@ body {
   padding: 2rem;
 }
 
+.back-nav {
+  max-width: 800px;
+  margin: 0 auto 0.75rem;
+}
+
+.back-nav a {
+  font-size: 0.9rem;
+  color: #888;
+  text-decoration: none;
+}
+
+.back-nav a:hover {
+  color: #e74c3c;
+}
+
 .recipe-card {
   max-width: 800px;
   margin: 0 auto;
@@ -198,6 +213,10 @@ body {
 
 /* Print Styles - Full Page */
 @media print {
+  .back-nav {
+    display: none;
+  }
+
   @page {
     size: letter;
     margin: 0;
