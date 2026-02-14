@@ -122,8 +122,15 @@ const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
       padding: 0.15rem 0.4rem;
       border-radius: 3px;
       white-space: nowrap;
+      color: var(--tag-color);
       background: transparent;
-      border: 1px solid currentColor;
+      border: 1px solid var(--tag-color);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .recipe-grid li:hover .tag-badge {
+      background: var(--tag-color);
+      color: #fff;
     }
 
     .recipe-grid .recipe-meta-info {
@@ -183,7 +190,7 @@ const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
                   return (
                     <span
                       class="tag-badge"
-                      style={`color:${cat?.color ?? '#8a7e72'}`}
+                      style={`--tag-color:${cat?.color ?? '#8a7e72'}`}
                     >
                       {tag}
                     </span>
