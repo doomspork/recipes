@@ -130,6 +130,15 @@ body {
   color: #2d2d2d;
 }
 
+.ingredients-list a {
+  color: #c0532d;
+  text-decoration: none;
+}
+
+.ingredients-list a:hover {
+  text-decoration: underline;
+}
+
 /* Directions Section */
 .directions {
   margin-bottom: 1.5rem;
