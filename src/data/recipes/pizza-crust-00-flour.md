@@ -5,7 +5,10 @@ prep_time: "15 minutes"
 rest_time: "2 hours"
 cook_time: "5 minutes"
 total_time: "2h 20m"
-method: "Dough"
+tags:
+  - "Oven"
+  - "Bread"
+  - "Italian"
 ingredients:
   - amount: "2 cups"
     name: "double zero (00) flour"

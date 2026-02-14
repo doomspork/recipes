@@ -4,7 +4,11 @@ servings: "6 Servings"
 prep_time: "15 minutes"
 cook_time: "45 minutes"
 total_time: "1h"
-method: "Stockpot"
+tags:
+  - "Stockpot"
+  - "Chicken"
+  - "Dinner"
+  - "American"
 ingredient_groups:
   - name: "Soup"
     items:

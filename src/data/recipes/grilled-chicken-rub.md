@@ -3,7 +3,11 @@ title: "Grilled Chicken Rub"
 servings: "12 Servings"
 prep_time: "5 minutes"
 total_time: "5m"
-method: "Spices"
+tags:
+  - "No-Cook"
+  - "Chicken"
+  - "Condiment"
+  - "American"
 ingredients:
   - amount: "1 tbsp"
     name: "salt"

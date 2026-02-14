@@ -4,7 +4,11 @@ servings: "8 Servings"
 prep_time: "10 minutes"
 cook_time: "1 hour 20 minutes"
 total_time: "1h 30m"
-method: "Instant Pot"
+tags:
+  - "Instant Pot"
+  - "Beef"
+  - "Dinner"
+  - "Mexican"
 ingredients:
   - amount: "2 lbs"
     name: "beef stew meat"

@@ -177,17 +177,21 @@ body {
   color: #2d2d2d;
 }
 
-.cooking-method {
-  font-size: 0.75rem;
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-self: center;
+}
+
+.tag-badge {
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #fff;
-  background: #c0532d;
-  padding: 0.3rem 0.7rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 4px;
   white-space: nowrap;
-  align-self: center;
 }
 
 /* Responsive Design */
@@ -280,9 +284,7 @@ body {
     print-color-adjust: exact;
   }
 
-  .cooking-method {
-    background: #c0532d;
-    color: #fff;
+  .tag-badge {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }

@@ -4,7 +4,11 @@ servings: "6 Servings"
 prep_time: "5 minutes"
 cook_time: "20 minutes"
 total_time: "25m"
-method: "Instant Pot"
+tags:
+  - "Instant Pot"
+  - "Beef"
+  - "Dinner"
+  - "Mexican"
 ingredients:
   - amount: "1 cup"
     name: "water"
