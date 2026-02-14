@@ -27,20 +27,22 @@ const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
     }
 
     .site-header {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
       padding: 2rem 0 1.5rem;
     }
 
     .site-logo {
-      width: 120px;
-      height: 120px;
+      width: 180px;
+      height: 180px;
     }
 
     .site-title {
       font-size: 2.5rem;
       font-weight: 700;
       color: #2d2d2d;
-      margin-top: 0.75rem;
       letter-spacing: -0.02em;
     }
 
@@ -54,7 +56,7 @@ const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
       width: 60px;
       height: 2px;
       background: #c0532d;
-      margin: 1rem auto 0;
+      margin: 0 auto;
       border: none;
     }
 
@@ -131,9 +133,14 @@ const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
         padding: 1rem;
       }
 
+      .site-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
       .site-logo {
-        width: 96px;
-        height: 96px;
+        width: 120px;
+        height: 120px;
       }
 
       .site-title {
@@ -150,10 +157,12 @@ const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
   <div class="recipe-index">
     <header class="site-header">
       <img src={`${import.meta.env.BASE_URL}/logo.png`} alt="Recipes" class="site-logo" />
-      <h1 class="site-title">Recipes</h1>
-      <p class="site-tagline">A family collection of tried & true favorites</p>
-      <hr class="divider" />
+      <div>
+        <h1 class="site-title">Recipes</h1>
+        <p class="site-tagline">A family collection of tried & true favorites</p>
+      </div>
     </header>
+    <hr class="divider" />
     <ul class="recipe-grid">
       {sorted.map((recipe) => (
         <li>
