@@ -9,7 +9,7 @@ ingredients:
   - amount: "6"
     name: "boneless, skinless chicken breasts"
   - amount: "2 tbsp"
-    name: '<a href="/recipes/grilled-chicken-rub">Grilled Chicken Rub</a>'
+    name: '<a href="../grilled-chicken-rub/">Grilled Chicken Rub</a>'
   - amount: "1 tbsp"
     name: "olive oil (or avocado oil)"
   - amount: "1 cup"
