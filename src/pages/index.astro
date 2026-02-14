@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { getTagCategory, sortTags } from '../data/tags';
+import { getTagCategory, cardTags } from '../data/tags';
 
 const recipes = await getCollection('recipes');
 const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
@@ -115,13 +115,15 @@ const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
     }
 
     .recipe-grid .tag-badge {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
       white-space: nowrap;
+      background: transparent;
+      border: 1px solid currentColor;
     }
 
     .recipe-grid .recipe-meta-info {
@@ -176,12 +178,12 @@ const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
             <span class="recipe-name">{recipe.data.title}</span>
             <div class="recipe-details">
               <div class="tag-list">
-                {sortTags(recipe.data.tags).map((tag) => {
+                {cardTags(recipe.data.tags).map((tag) => {
                   const cat = getTagCategory(tag);
                   return (
                     <span
                       class="tag-badge"
-                      style={`background:${cat?.color ?? '#8a7e72'};color:${cat?.textColor ?? '#fff'}`}
+                      style={`color:${cat?.color ?? '#8a7e72'}`}
                     >
                       {tag}
                     </span>
