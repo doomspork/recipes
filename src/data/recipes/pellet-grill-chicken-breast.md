@@ -4,7 +4,11 @@ servings: "6 Servings"
 prep_time: "15 minutes"
 cook_time: "35 minutes"
 total_time: "50m"
-method: "Pellet Grill"
+tags:
+  - "Pellet Grill"
+  - "Chicken"
+  - "Dinner"
+  - "American"
 ingredients:
   - amount: "6"
     name: "boneless, skinless chicken breasts"

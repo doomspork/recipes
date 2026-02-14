@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { getTagCategory, sortTags } from '../data/tags';
 
 const recipes = await getCollection('recipes');
 const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
@@ -107,15 +108,20 @@ const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
       flex-wrap: wrap;
     }
 
-    .recipe-grid .method-badge {
-      font-size: 0.75rem;
+    .recipe-grid .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .recipe-grid .tag-badge {
+      font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: #fff;
-      background: #c0532d;
-      padding: 0.25rem 0.6rem;
+      padding: 0.2rem 0.5rem;
       border-radius: 4px;
+      white-space: nowrap;
     }
 
     .recipe-grid .recipe-meta-info {
@@ -169,7 +175,19 @@ const sorted = recipes.sort((a, b) => a.data.title.localeCompare(b.data.title));
           <a href={`${import.meta.env.BASE_URL}/${recipe.id}/`}>
             <span class="recipe-name">{recipe.data.title}</span>
             <div class="recipe-details">
-              <span class="method-badge">{recipe.data.method}</span>
+              <div class="tag-list">
+                {sortTags(recipe.data.tags).map((tag) => {
+                  const cat = getTagCategory(tag);
+                  return (
+                    <span
+                      class="tag-badge"
+                      style={`background:${cat?.color ?? '#8a7e72'};color:${cat?.textColor ?? '#fff'}`}
+                    >
+                      {tag}
+                    </span>
+                  );
+                })}
+              </div>
               <span class="recipe-meta-info">
                 <span>{recipe.data.total_time}</span>
                 <span>{recipe.data.servings}</span>

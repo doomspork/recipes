@@ -16,7 +16,7 @@ const recipes = defineCollection({
     rest_time: z.string().optional(),
     cook_time: z.string().optional(),
     total_time: z.string(),
-    method: z.string(),
+    tags: z.array(z.string()).min(1),
     ingredients: z.array(ingredient).optional(),
     ingredient_groups: z.array(z.object({
       name: z.string(),

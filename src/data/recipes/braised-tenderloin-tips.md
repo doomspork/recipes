@@ -4,7 +4,11 @@ servings: "8 Servings"
 prep_time: "15 minutes"
 cook_time: "2 hours"
 total_time: "2h 15m"
-method: "Stovetop"
+tags:
+  - "Stovetop"
+  - "Beef"
+  - "Dinner"
+  - "American"
 ingredients:
   - amount: "3 lbs"
     name: "beef tenderloin, cut into 2\" pieces"

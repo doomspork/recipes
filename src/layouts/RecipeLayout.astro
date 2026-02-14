@@ -1,5 +1,6 @@
 ---
 import '../styles/recipe.css';
+import { getTagCategory, sortTags } from '../data/tags';
 
 interface Ingredient {
   amount?: string;
@@ -18,7 +19,7 @@ interface Props {
   rest_time?: string;
   cook_time?: string;
   total_time: string;
-  method: string;
+  tags: string[];
   ingredients?: Ingredient[];
   ingredient_groups?: IngredientGroup[];
   directions: string[];
@@ -31,7 +32,7 @@ const {
   rest_time,
   cook_time,
   total_time,
-  method,
+  tags,
   ingredients,
   ingredient_groups,
   directions,
@@ -53,7 +54,19 @@ const {
     <header class="recipe-header">
       <div class="recipe-headline">
         <h1 class="recipe-title">{title}</h1>
-        <span class="cooking-method">{method}</span>
+        <div class="tag-list">
+          {sortTags(tags).map((tag) => {
+            const cat = getTagCategory(tag);
+            return (
+              <span
+                class="tag-badge"
+                style={`background:${cat?.color ?? '#8a7e72'};color:${cat?.textColor ?? '#fff'}`}
+              >
+                {tag}
+              </span>
+            );
+          })}
+        </div>
       </div>
       <div class="recipe-meta">
         <span class="total-time">{total_time}</span>

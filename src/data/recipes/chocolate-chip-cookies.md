@@ -4,7 +4,10 @@ servings: "36 Cookies"
 prep_time: "10 minutes"
 cook_time: "8 minutes"
 total_time: "30m"
-method: "Oven"
+tags:
+  - "Oven"
+  - "Dessert"
+  - "American"
 ingredients:
   - amount: "1 cup"
     name: "salted butter, softened"
