@@ -51,6 +51,12 @@ export function getTagCategory(tag: string): TagCategory | undefined {
   return categoryKey ? TAG_CATEGORIES[categoryKey] : undefined;
 }
 
+const CARD_CATEGORIES = new Set(["method", "protein"]);
+
+export function cardTags(tags: string[]): string[] {
+  return sortTags(tags).filter((tag) => CARD_CATEGORIES.has(TAGS[tag] ?? ""));
+}
+
 export function sortTags(tags: string[]): string[] {
   return [...tags].sort((a, b) => {
     const aIdx = CATEGORY_ORDER.indexOf(TAGS[a] ?? "");
