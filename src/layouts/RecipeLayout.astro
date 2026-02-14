@@ -1,0 +1,104 @@
+---
+import '../styles/recipe.css';
+
+interface Ingredient {
+  amount?: string;
+  name: string;
+}
+
+interface IngredientGroup {
+  name: string;
+  items: Ingredient[];
+}
+
+interface Props {
+  title: string;
+  servings: string;
+  prep_time?: string;
+  rest_time?: string;
+  cook_time?: string;
+  total_time: string;
+  method: string;
+  ingredients?: Ingredient[];
+  ingredient_groups?: IngredientGroup[];
+  directions: string[];
+}
+
+const {
+  title,
+  servings,
+  prep_time,
+  rest_time,
+  cook_time,
+  total_time,
+  method,
+  ingredients,
+  ingredient_groups,
+  directions,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+</head>
+<body>
+  <article class="recipe-card">
+    <header class="recipe-header">
+      <h1 class="recipe-title">{title}</h1>
+      <div class="recipe-meta">
+        <span>{servings}</span>
+        {prep_time && <span>Prep: {prep_time}</span>}
+        {rest_time && <span>Rest: {rest_time}</span>}
+        {cook_time && <span>Cook: {cook_time}</span>}
+      </div>
+    </header>
+
+    <div class="recipe-body">
+      <section class="ingredients">
+        <h2 class="section-title">Ingredients</h2>
+
+        {ingredient_groups ? (
+          ingredient_groups.map((group) => (
+            <div class="ingredients-group">
+              <div class="ingredients-group-title">{group.name}:</div>
+              <ul class="ingredients-list">
+                {group.items.map((item) => (
+                  <li>
+                    {item.amount && <span class="ingredient-amount">{item.amount}</span>}{item.amount && ' '}{item.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        ) : (
+          <ul class="ingredients-list">
+            {ingredients?.map((item) => (
+              <li>
+                {item.amount && <span class="ingredient-amount">{item.amount}</span>}{item.amount && ' '}{item.name}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section class="directions">
+        <h2 class="section-title">Directions</h2>
+        <ol class="directions-list">
+          {directions.map((step) => (
+            <li>{step}</li>
+          ))}
+        </ol>
+      </section>
+    </div>
+
+    <footer class="recipe-footer">
+      <span class="total-time">{total_time}</span>
+      <span class="cooking-method">{method}</span>
+    </footer>
+  </article>
+</body>
+</html>
