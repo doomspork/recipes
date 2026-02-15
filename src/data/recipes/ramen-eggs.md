@@ -1,0 +1,32 @@
+---
+title: "Ramen Eggs (Ajitama)"
+servings: "6 Eggs"
+prep_time: "3 minutes"
+cook_time: "7 minutes"
+total_time: "10m"
+tags:
+  - "Stovetop"
+  - "Vegetarian"
+  - "Snack"
+  - "Japanese"
+ingredients:
+  - amount: "6"
+    name: "large eggs"
+  - amount: "1 tbsp"
+    name: "vinegar"
+  - amount: "1/2 cup"
+    name: "water or stock"
+  - amount: "5 tbsp"
+    name: "soy sauce"
+  - amount: "4 tbsp"
+    name: "mirin"
+  - amount: "2 tsp"
+    name: "dark soy sauce (optional, for color)"
+directions:
+  - "Bring a pot of water to a rolling boil and add the vinegar. Gently lower eggs into the boiling water using a slotted spoon."
+  - "Cook cold eggs for 7 minutes or room temperature eggs for 6 minutes, stirring gently during the first 30 seconds to center the yolks."
+  - "Transfer eggs immediately to an ice bath and let cool completely. Once cooled, carefully crack the shells and peel."
+  - "Combine the water or stock, soy sauce, mirin, and dark soy sauce (if using) in a ziplock bag. Place the peeled eggs inside, remove as much air as possible, and seal."
+  - "Refrigerate and marinate for at least 4 hours, or up to 3 days for deeper flavor."
+  - "To serve, cut eggs in half and place atop ramen, rice bowls, or enjoy as a snack."
+---
