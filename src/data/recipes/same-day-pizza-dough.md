@@ -1,0 +1,32 @@
+---
+title: "Same-Day Pizza Dough"
+servings: "4 Dough Balls"
+prep_time: "15 minutes"
+rest_time: "2 hours"
+cook_time: "10 minutes"
+total_time: "2h 25m"
+tags:
+  - "Oven"
+  - "Vegetarian"
+  - "Bread"
+  - "Italian"
+ingredients:
+  - amount: "300g"
+    name: "00 flour"
+  - amount: "300g"
+    name: "all-purpose flour"
+  - amount: "1 tsp"
+    name: "active dry yeast"
+  - amount: "12g"
+    name: "fine sea salt"
+  - amount: "350g"
+    name: "warm water (no warmer than 100°F)"
+  - amount: "2 tbsp"
+    name: "olive oil"
+directions:
+  - "In a stand mixer fitted with the dough hook, combine the 00 flour, all-purpose flour, yeast, and salt. Add the warm water and olive oil. Mix on medium-low for 10 minutes until the dough is smooth and elastic."
+  - "Transfer the dough to a lightly greased bowl, cover with plastic wrap, and let rise at room temperature for 2 hours until doubled in size."
+  - "Turn the dough out onto a clean surface. It should be tacky but not sticky. Divide into 4 equal portions and shape each into a tight ball."
+  - "Place the dough balls in a greased container, cover, and refrigerate for at least 2 hours and up to 72 hours. Remove from the fridge 30 minutes to 1 hour before cooking to bring to room temperature."
+  - "On a floured surface, stretch each dough ball into an 11-12 inch circle and top as desired."
+---
