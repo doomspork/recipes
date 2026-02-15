@@ -1,0 +1,42 @@
+---
+title: "Soft Pretzel Bites"
+servings: "60 Pretzel Bites"
+prep_time: "40 minutes"
+cook_time: "15 minutes"
+total_time: "1h"
+tags:
+  - "Oven"
+  - "Vegetarian"
+  - "Snack"
+  - "American"
+ingredient_groups:
+  - name: "Dough"
+    items:
+      - amount: "1 1/2 cups"
+        name: "warm water (around 100°F)"
+      - amount: "2 1/4 tsp"
+        name: "instant or active dry yeast"
+      - amount: "1 tbsp"
+        name: "brown sugar"
+      - amount: "1 tsp"
+        name: "salt"
+      - amount: "1 tbsp"
+        name: "unsalted butter, melted and slightly cooled"
+      - amount: "3 3/4 - 4 cups"
+        name: "all-purpose flour"
+  - name: "Boiling & Topping"
+    items:
+      - amount: "9 cups"
+        name: "water"
+      - amount: "1/2 cup"
+        name: "baking soda"
+      - name: "coarse salt for topping"
+directions:
+  - "In the bowl of a stand mixer fitted with the paddle attachment, whisk together the warm water, yeast, and brown sugar. Cover and let sit for 5 minutes until foamy."
+  - "Add the salt, melted butter, and 3 cups of flour. Beat on low for 1 minute, scrape down the sides, then add 3/4 cup more flour. Beat until the dough pulls away from the sides, about 2 minutes. Add the remaining 1/4 cup flour if the dough is extremely sticky."
+  - "Switch to the dough hook and knead for 5 minutes until the dough is smooth and slightly tacky. Cover with a towel and let rest for 10-30 minutes."
+  - "Preheat oven to 400°F. Line two baking sheets with parchment paper or silicone baking mats."
+  - "Cut the dough into 6 equal pieces. Roll each piece into a 20-inch rope (if the dough shrinks back, let it rest for 10 minutes). Cut each rope into 1.5-2 inch pieces."
+  - "Bring the 9 cups of water and baking soda to a boil in a large pot. Working in batches of 8-10, boil the pretzel bites for 10-15 seconds. Remove with a slotted spatula, drain, and place on the prepared baking sheets. Sprinkle with coarse salt while still wet."
+  - "Bake for 15 minutes until golden brown. Serve warm with cheese sauce or mustard."
+---
