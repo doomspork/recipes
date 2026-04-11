@@ -44,6 +44,7 @@ export const TAGS: Record<string, string> = {
   "Chinese":  "cuisine",
   "Thai":     "cuisine",
   "Japanese": "cuisine",
+  "Greek":    "cuisine",
 };
 
 export function getTagCategory(tag: string): TagCategory | undefined {
