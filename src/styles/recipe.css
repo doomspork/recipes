@@ -91,6 +91,36 @@ body {
   display: inline-block;
 }
 
+/* Scale Controls */
+.scale-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.scale-btn {
+  border: 1.5px solid #d4cdc4;
+  background: transparent;
+  color: #8a7e72;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.scale-btn.active {
+  background: #c0532d;
+  color: #fff;
+  border-color: #c0532d;
+}
+
+.scale-btn:hover:not(.active) {
+  border-color: #c0532d;
+  color: #c0532d;
+}
+
 /* Ingredients Section */
 .ingredients {
   margin-bottom: 2rem;
@@ -225,7 +255,8 @@ body {
 
 /* Print Styles - Full Page */
 @media print {
-  .back-nav {
+  .back-nav,
+  .scale-controls {
     display: none;
   }
 

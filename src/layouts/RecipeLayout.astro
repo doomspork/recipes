@@ -74,7 +74,7 @@ const {
       </div>
       <div class="recipe-meta">
         <span class="total-time">{total_time}</span>
-        <span>{servings}</span>
+        <span class="servings" data-base-servings={servings}>{servings}</span>
         {prep_time && <span>Prep: {prep_time}</span>}
         {rest_time && <span>Rest: {rest_time}</span>}
         {cook_time && <span>Cook: {cook_time}</span>}
@@ -84,6 +84,12 @@ const {
     <div class="recipe-body">
       <section class="ingredients">
         <h2 class="section-title">Ingredients</h2>
+        <div class="scale-controls">
+          <button class="scale-btn active" data-scale="1">1x</button>
+          <button class="scale-btn" data-scale="2">2x</button>
+          <button class="scale-btn" data-scale="3">3x</button>
+          <button class="scale-btn" data-scale="4">4x</button>
+        </div>
 
         {ingredient_groups ? (
           ingredient_groups.map((group) => (
@@ -92,7 +98,7 @@ const {
               <ul class="ingredients-list">
                 {group.items.map((item) => (
                   <li>
-                    {item.amount && <span class="ingredient-amount">{item.amount}</span>}{item.amount && ' '}<span set:html={item.name} />
+                    {item.amount && <span class="ingredient-amount" data-base-amount={item.amount}>{item.amount}</span>}{item.amount && ' '}<span set:html={item.name} />
                   </li>
                 ))}
               </ul>
@@ -102,7 +108,7 @@ const {
           <ul class="ingredients-list">
             {ingredients?.map((item) => (
               <li>
-                {item.amount && <span class="ingredient-amount">{item.amount}</span>}{item.amount && ' '}<span set:html={item.name} />
+                {item.amount && <span class="ingredient-amount" data-base-amount={item.amount}>{item.amount}</span>}{item.amount && ' '}<span set:html={item.name} />
               </li>
             ))}
           </ul>
@@ -120,5 +126,236 @@ const {
     </div>
 
   </article>
+
+  <script>
+    // --- Amount Parsing ---
+
+    function parseSingleAmount(str) {
+      str = str.trim();
+      if (!str) return null;
+
+      // Mixed number + unit: "1 1/2 cups"
+      let m = str.match(/^(\d+)\s+(\d+)\/(\d+)\s*(.*)$/);
+      if (m) {
+        const value = parseInt(m[1]) + parseInt(m[2]) / parseInt(m[3]);
+        const unit = m[4].trim();
+        return { value, unit, noSpace: false };
+      }
+
+      // Fraction + unit: "1/2 cup"
+      m = str.match(/^(\d+)\/(\d+)\s*(.*)$/);
+      if (m) {
+        const value = parseInt(m[1]) / parseInt(m[2]);
+        const unit = m[3].trim();
+        return { value, unit, noSpace: false };
+      }
+
+      // Whole number + unit (with space): "2 cups"
+      m = str.match(/^(\d+)\s+(.+)$/);
+      if (m) {
+        return { value: parseInt(m[1]), unit: m[2].trim(), noSpace: false };
+      }
+
+      // Metric (number directly attached to unit): "300g"
+      m = str.match(/^(\d+)([a-zA-Z]+)$/);
+      if (m) {
+        return { value: parseInt(m[1]), unit: m[2], noSpace: true };
+      }
+
+      // Bare number: "6"
+      m = str.match(/^(\d+)$/);
+      if (m) {
+        return { value: parseInt(m[1]), unit: '', noSpace: false };
+      }
+
+      return null;
+    }
+
+    function parseAmount(str) {
+      if (!str) return null;
+      str = str.trim();
+
+      // Range with spaces: "3 3/4 - 4 cups"
+      if (str.includes(' - ')) {
+        const parts = str.split(' - ');
+        const left = parseSingleAmount(parts[0]);
+        const right = parseSingleAmount(parts.slice(1).join(' - '));
+        if (left && right) {
+          if (!left.unit && right.unit) left.unit = right.unit;
+          return { quantities: [left, right], isRange: true };
+        }
+      }
+
+      // Range without spaces: "4-4 1/2 cups" (hyphen between digits)
+      const compactRange = str.match(/^(\d+)-(\d.*)$/);
+      if (compactRange) {
+        const left = parseSingleAmount(compactRange[1]);
+        const right = parseSingleAmount(compactRange[2]);
+        if (left && right) {
+          if (!left.unit && right.unit) left.unit = right.unit;
+          return { quantities: [left, right], isRange: true };
+        }
+      }
+
+      // Single amount
+      const single = parseSingleAmount(str);
+      if (single) {
+        return { quantities: [single], isRange: false };
+      }
+
+      return null;
+    }
+
+    // --- Fraction Formatting ---
+
+    const COMMON_FRACTIONS = [
+      [0.25, '1/4'],
+      [1/3,  '1/3'],
+      [0.5,  '1/2'],
+      [2/3,  '2/3'],
+      [0.75, '3/4'],
+    ];
+
+    function toFraction(value) {
+      if (value < 0) return String(value);
+      const whole = Math.floor(value);
+      const frac = value - whole;
+
+      if (Math.abs(frac) < 0.01) return String(whole);
+
+      for (const [target, str] of COMMON_FRACTIONS) {
+        if (Math.abs(frac - target) < 0.01) {
+          return whole > 0 ? `${whole} ${str}` : str;
+        }
+      }
+
+      // Fallback: round to 2 decimal places
+      return whole > 0
+        ? `${whole} ${Math.round(frac * 100) / 100}`
+        : String(Math.round(value * 100) / 100);
+    }
+
+    // --- Pluralization ---
+
+    const PLURAL_UNITS = { cup: 'cups', lb: 'lbs', quart: 'quarts' };
+    const SINGULAR_UNITS = { cups: 'cup', lbs: 'lb', quarts: 'quart' };
+
+    function pluralizeUnit(unit, value) {
+      if (value <= 1 + 0.01) {
+        return SINGULAR_UNITS[unit] || unit;
+      }
+      return PLURAL_UNITS[unit] || unit;
+    }
+
+    function formatQuantity(qty) {
+      const valueStr = toFraction(qty.value);
+      const unit = pluralizeUnit(qty.unit, qty.value);
+      if (!unit) return valueStr;
+      if (qty.noSpace) return `${valueStr}${unit}`;
+      return `${valueStr} ${unit}`;
+    }
+
+    // --- Unit Conversion ---
+
+    const UNIT_CHAIN = [
+      { from: 'tsp', to: 'tbsp', factor: 3 },
+      { from: 'tbsp', to: 'cup', factor: 16 },
+      { from: 'cup', to: 'quart', factor: 4 },
+    ];
+
+    function normalizeUnit(unit) {
+      const lower = unit.toLowerCase();
+      if (lower === 'cups') return 'cup';
+      if (lower === 'quarts') return 'quart';
+      if (lower === 'lbs') return 'lb';
+      return lower;
+    }
+
+    function isCleanForConversion(value) {
+      if (value < 1) return false;
+      const frac = value % 1;
+      return [0, 0.25, 0.5, 0.75].some(t => Math.abs(frac - t) < 0.01);
+    }
+
+    function scaleQuantity(qty, factor) {
+      let value = qty.value * factor;
+      let unit = qty.unit;
+      const noSpace = qty.noSpace;
+
+      const norm = normalizeUnit(unit);
+
+      // Try conversion chain greedily
+      let currentNorm = norm;
+      let currentValue = value;
+      let currentUnit = unit;
+
+      for (const step of UNIT_CHAIN) {
+        if (currentNorm === step.from) {
+          const converted = currentValue / step.factor;
+          if (isCleanForConversion(converted)) {
+            currentValue = converted;
+            currentUnit = step.to;
+            currentNorm = normalizeUnit(step.to);
+          } else {
+            break;
+          }
+        }
+      }
+
+      return { value: currentValue, unit: currentUnit, noSpace };
+    }
+
+    // --- DOM Wiring ---
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const amountEls = document.querySelectorAll('.ingredient-amount[data-base-amount]');
+      const parsedAmounts = new Map();
+
+      amountEls.forEach(el => {
+        const baseStr = el.getAttribute('data-base-amount');
+        if (baseStr) {
+          const parsed = parseAmount(baseStr);
+          if (parsed) parsedAmounts.set(el, parsed);
+        }
+      });
+
+      const servingsEl = document.querySelector('.servings[data-base-servings]');
+      let baseServingsNumber = null;
+      let baseServingsLabel = '';
+      if (servingsEl) {
+        const text = servingsEl.getAttribute('data-base-servings');
+        const match = text.match(/^(\d+)\s+(.*)$/);
+        if (match) {
+          baseServingsNumber = parseInt(match[1], 10);
+          baseServingsLabel = match[2];
+        }
+      }
+
+      const buttons = document.querySelectorAll('.scale-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const factor = parseInt(btn.getAttribute('data-scale'), 10);
+
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          parsedAmounts.forEach((parsed, el) => {
+            if (parsed.isRange) {
+              const left = scaleQuantity(parsed.quantities[0], factor);
+              const right = scaleQuantity(parsed.quantities[1], factor);
+              el.textContent = `${formatQuantity(left)} - ${formatQuantity(right)}`;
+            } else {
+              const scaled = scaleQuantity(parsed.quantities[0], factor);
+              el.textContent = formatQuantity(scaled);
+            }
+          });
+
+          if (servingsEl && baseServingsNumber !== null) {
+            servingsEl.textContent = `${baseServingsNumber * factor} ${baseServingsLabel}`;
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
