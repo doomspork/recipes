@@ -18,7 +18,7 @@ ingredients:
     name: "water or stock"
   - amount: "5 tbsp"
     name: "soy sauce"
-  - amount: "4 tbsp"
+  - amount: "1/4 cup"
     name: "mirin"
   - amount: "2 tsp"
     name: "dark soy sauce (optional, for color)"

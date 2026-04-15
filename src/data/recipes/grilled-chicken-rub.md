@@ -13,7 +13,7 @@ ingredients:
     name: "salt"
   - amount: "1 tsp"
     name: "brown sugar"
-  - amount: "3 tsp"
+  - amount: "1 tbsp"
     name: "dried Italian herb blend"
   - amount: "1/2 tsp"
     name: "onion powder"
