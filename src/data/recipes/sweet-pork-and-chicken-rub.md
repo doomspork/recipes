@@ -1,0 +1,32 @@
+---
+title: "Sweet Rub for Pork and Chicken"
+servings: "12 Servings"
+prep_time: "5 minutes"
+total_time: "5m"
+tags:
+  - "No-Cook"
+  - "Chicken"
+  - "Pork"
+  - "Condiment"
+  - "American"
+ingredients:
+  - amount: "1/4 cup"
+    name: "dark brown sugar"
+  - amount: "1 tbsp"
+    name: "coarse sea salt"
+  - amount: "2 tsp"
+    name: "black pepper"
+  - amount: "2 tsp"
+    name: "smoked paprika"
+  - amount: "2 tsp"
+    name: "garlic powder"
+  - amount: "2 tsp"
+    name: "onion powder"
+  - amount: "1 tsp"
+    name: "ground mustard powder"
+  - amount: "1/2 tsp"
+    name: "cayenne pepper"
+directions:
+  - "Combine all ingredients in a small bowl and stir well, using a fork to break up any clumps."
+  - "Apply the rub immediately to your meat, or store in an airtight container for up to one month."
+---
