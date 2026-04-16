@@ -1,12 +1,11 @@
 ---
-title: "Pork and Chicken Rub"
+title: "Grilled Chicken Rub"
 servings: "12 Servings"
 prep_time: "5 minutes"
 total_time: "5m"
 tags:
   - "No-Cook"
   - "Chicken"
-  - "Pork"
   - "Condiment"
   - "American"
 ingredients:
@@ -30,5 +29,5 @@ ingredients:
     name: "dry ground mustard"
 directions:
   - "Whisk together all ingredients and store in an airtight container at room temperature."
-  - "To use, rub all over pork or chicken that has been drizzled with olive oil. Grill until cooked through and serve, or slice or dice and use for other recipes or store chilled in an airtight container to use later."
+  - "To use, rub all over chicken that has been drizzled with olive oil. Grill until cooked through and serve, or slice or dice and use for other recipes or store chilled in an airtight container to use later."
 ---
