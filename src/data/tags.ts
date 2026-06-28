@@ -18,6 +18,7 @@ export const TAGS: Record<string, string> = {
   "Stovetop":     "method",
   "Oven":         "method",
   "Instant Pot":  "method",
+  "Slow Cooker":  "method",
   "Pellet Grill": "method",
   "Smoker":       "method",
   "Stockpot":     "method",
