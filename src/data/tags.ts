@@ -27,6 +27,7 @@ export const TAGS: Record<string, string> = {
   // Protein
   "Beef":       "protein",
   "Chicken":    "protein",
+  "Lamb":       "protein",
   "Pork":       "protein",
   "Vegetarian": "protein",
 
@@ -39,13 +40,14 @@ export const TAGS: Record<string, string> = {
   "Bread":     "meal",
 
   // Cuisine
-  "American": "cuisine",
-  "Mexican":  "cuisine",
-  "Italian":  "cuisine",
-  "Indian":   "cuisine",
-  "Chinese":  "cuisine",
-  "Thai":     "cuisine",
-  "Japanese": "cuisine",
+  "American":       "cuisine",
+  "Mexican":        "cuisine",
+  "Italian":        "cuisine",
+  "Indian":         "cuisine",
+  "Chinese":        "cuisine",
+  "Thai":           "cuisine",
+  "Japanese":       "cuisine",
+  "Middle Eastern": "cuisine",
 };
 
 export function getTagCategory(tag: string): TagCategory | undefined {
